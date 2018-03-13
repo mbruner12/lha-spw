@@ -1,0 +1,776 @@
+[
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Recorded Persons",
+    "columnName": "Recorded Persons"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Producer / Organization",
+    "columnName": "Producer / Organization"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Place",
+    "columnName": "Place"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Notes",
+    "columnName": "Notes"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Interviewer Name",
+    "columnName": "Interviewer Name"
+  },
+  {
+    "op": "core/blank-down",
+    "description": "Blank down cells in column Accession Number",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "facetCount(value, 'value', 'Accession Number') > 1",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "Accession Number",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Accession Number"
+        }
+      ]
+    },
+    "columnName": "Accession Number"
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "description": "Join multi-valued cells in column Title",
+    "columnName": "Title",
+    "keyColumnName": "Accession Number",
+    "separator": ""
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "description": "Join multi-valued cells in column Persons Mentioned",
+    "columnName": "Persons Mentioned",
+    "keyColumnName": "Accession Number",
+    "separator": ""
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "description": "Join multi-valued cells in column Persons Mentioned",
+    "columnName": "Persons Mentioned",
+    "keyColumnName": "Accession Number",
+    "separator": ""
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Date Recorded using expression value.toDate()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "facetCount(value, 'value', 'Accession Number') > 1",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            },
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "Accession Number",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Accession Number"
+        }
+      ]
+    },
+    "columnName": "Date Recorded",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "description": "Join multi-valued cells in column Accession Number",
+    "columnName": "Accession Number",
+    "keyColumnName": "Accession Number",
+    "separator": ""
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Persons Mentioned",
+    "columnName": "Persons Mentioned"
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "description": "Join multi-valued cells in column Accession Number",
+    "columnName": "Accession Number",
+    "keyColumnName": "Accession Number",
+    "separator": ""
+  },
+  {
+    "op": "core/blank-down",
+    "description": "Blank down cells in column Date Recorded",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Date Recorded"
+  },
+  {
+    "op": "core/blank-down",
+    "description": "Blank down cells in column Subject",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject"
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "description": "Join multi-valued cells in column Accession Number",
+    "columnName": "Accession Number",
+    "keyColumnName": "Accession Number",
+    "separator": ""
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Date Recorded",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Date Recorded",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "April 12 - 14, 1991",
+          "April 12 - 14,  1991",
+          "April 12 -14, 1991"
+        ],
+        "to": "1991-04-12; 1991-04-13; 1991-04-14"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "March 1990",
+          "March, 1990"
+        ],
+        "to": "1990-03"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Late seventies",
+          "late seventies"
+        ],
+        "to": "1970"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "March 22, 23, 24 1985",
+          "March 22, 23, 24, 1985"
+        ],
+        "to": "1985-03-22;1985-03-23; 1985-03-24"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "March 1989",
+          "March, 1989"
+        ],
+        "to": "1989-03"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Winter 83-84",
+          "winter 83-84"
+        ],
+        "to": "1983; 1984"
+      }
+    ]
+  },
+  {
+    "op": "core/multivalued-cell-split",
+    "description": "Split multi-valued cells in column Date Recorded",
+    "columnName": "Date Recorded",
+    "keyColumnName": "Accession Number",
+    "mode": "separator",
+    "separator": ",",
+    "regex": false
+  },
+  {
+    "op": "core/multivalued-cell-split",
+    "description": "Split multi-valued cells in column Date Recorded",
+    "columnName": "Date Recorded",
+    "keyColumnName": "Accession Number",
+    "mode": "separator",
+    "separator": ";",
+    "regex": false
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Date Recorded using expression value.toDate()",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Date Recorded",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/multivalued-cell-split",
+    "description": "Split multi-valued cells in column Subject",
+    "columnName": "Subject",
+    "keyColumnName": "Accession Number",
+    "mode": "separator",
+    "separator": ";",
+    "regex": false
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Subject using expression value.trim()",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Subject using expression value.replace(/\\s+/,' ')",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject",
+    "expression": "value.replace(/\\s+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Subject",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "butch/femme",
+          "Butch/Femme",
+          "Butch/femme"
+        ],
+        "to": "Butch and Fem."
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "\"Lesbian Literature\"",
+          "Lesbian literature",
+          "lesbian literature"
+        ],
+        "to": "Writing: Literature: Lesbian"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "bibliography, catalog",
+          "catalog, bibliography"
+        ],
+        "to": "Disability: Bibliography"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Catholicism",
+          "catholicism"
+        ],
+        "to": "Catholicism"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Being outed",
+          "being outed"
+        ],
+        "to": "Outing"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "This Bridge Called My Back",
+          "\"This Bridge Called My Back\""
+        ],
+        "to": "Books: This Bridge Called My Back"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Gay liberation",
+          "gay liberation"
+        ],
+        "to": "Gay Liberation Movement"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "separatism",
+          "Separatism"
+        ],
+        "to": "Separatism"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Daughters of Bilitis",
+          "Daughters of Bilitis."
+        ],
+        "to": "Daughters of Bilitis"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Black lesbians",
+          "black lesbians"
+        ],
+        "to": "Black lesbians"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Lesbian Poetry",
+          "lesbian poetry"
+        ],
+        "to": "Poetry"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "lesbians viewed as \"abnormal\"",
+          "lesbians viewed as abnormal"
+        ],
+        "to": "Homophobia"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "\"Boots of Leather..\"",
+          "\"\"Boots of Leather..\""
+        ],
+        "to": "Books: Boots of Leather, Slippers of Gold"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Fundraising",
+          "fundraising"
+        ],
+        "to": "Fundraising"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "teacher - student relationships",
+          "teacher student relationships"
+        ],
+        "to": "Teachers and Students"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Power and oppression including power in sexual relationships",
+          "Power and oppression , including power in sexual relationships"
+        ],
+        "to": "Power (theory); Sexuality: Roles"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Aging",
+          "aging"
+        ],
+        "to": "Aging"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Jewish Lesbians",
+          "Jewish lesbians"
+        ],
+        "to": "Jewish Lesbians"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Lesbian relationships",
+          "lesbian relationships"
+        ],
+        "to": "Relationships"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Poetry",
+          "poetry"
+        ],
+        "to": "Poetry"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Political Movements and Community Struggles",
+          "Political movements and community struggles"
+        ],
+        "to": "Political Movements and Community Struggles"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "abortion",
+          "Abortion"
+        ],
+        "to": "Abortion"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Writing",
+          "writing"
+        ],
+        "to": "Writing"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Oral histories on mothers",
+          "Oral histories on mothers."
+        ],
+        "to": "Mothers"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "AC/DC",
+          "ACDC"
+        ],
+        "to": "AC/DC"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Motherhood",
+          "motherhood"
+        ],
+        "to": "Motherhood"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "COYOTE",
+          "Coyote"
+        ],
+        "to": "COYOTE"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Buffalo Lesbian Community",
+          "Buffalo Lesbian community"
+        ],
+        "to": "Buffalo Lesbian Community"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "class",
+          "Class"
+        ],
+        "to": "Class"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "science fiction",
+          "Science fiction"
+        ],
+        "to": "Science fiction"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "erotica",
+          "erotica."
+        ],
+        "to": "Erotica"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "S&M",
+          "S/M"
+        ],
+        "to": "S&M"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "AIDS",
+          "AIDs"
+        ],
+        "to": "AIDS"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "tarot",
+          "Tarot"
+        ],
+        "to": "Tarot"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Christianity",
+          "christianity"
+        ],
+        "to": "Christianity"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "\" power",
+          "Power"
+        ],
+        "to": "Power (theory)"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "lesbian feminism",
+          "Lesbian Feminism"
+        ],
+        "to": "Feminism"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "\" AIDS Crisis.",
+          "Aids Crisis"
+        ],
+        "to": "AIDS"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "activism",
+          "Activism"
+        ],
+        "to": "Activism"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "matriarchy",
+          "Matriarchy"
+        ],
+        "to": "Matriarchy"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "environmental illness",
+          "Environmental illness"
+        ],
+        "to": "Illness: Environmental"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Subject",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "butch vs. femme behavior"
+        ],
+        "to": "Butch and Fem."
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Subject",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "sex with men"
+        ],
+        "to": "Heterosexuality"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Subject",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "being outed at work"
+        ],
+        "to": "Outing; Job Discrimination"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Subject",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "lesbian identity"
+        ],
+        "to": "Roles"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Subject",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "Subject",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "publicly coming out"
+        ],
+        "to": "Coming Out"
+      }
+    ]
+  }
+]
